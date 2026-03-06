@@ -16,3 +16,7 @@ Example Output
 
 Solution is generated in a .out file. 
 
+
+
+Answers to written component in pdf in repo named Algos-Programming Assignment 2.pdf
+
