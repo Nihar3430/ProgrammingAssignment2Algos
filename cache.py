@@ -14,7 +14,19 @@ def read_input(filename):
 
 
 def fifo_misses(k, requests):
-    return
+    cache = []
+    misses = 0
+    for i in requests:
+        if i in cache:
+            continue
+
+        misses += 1
+        if len(cache) < k:
+            cache.append(i)
+        else:
+            cache.pop(0)
+            cache.append(i)
+    return misses
 
 def lru_misses(k, requests):
     return
