@@ -12,3 +12,32 @@ def read_input(filename):
 
     return k, m, requests
 
+
+def fifo_misses(k, requests):
+    return
+
+def lru_misses(k, requests):
+    return
+
+def optff_misses(k, requests):
+    return
+
+
+def main():
+    if len(sys.argv) != 2:
+        return
+
+    filename = sys.argv[1]
+    k, m, requests = read_input(filename)
+
+    fifo_miss_return = fifo_misses(k, requests)
+    lru_miss_return = lru_misses(k, requests)
+    optff_miss_return = optff_misses(k, requests)
+
+    print("FIFO  :", fifo_miss_return)
+    print("LRU   :", lru_miss_return)
+    print("OPTFF :", optff_miss_return)
+
+
+if __name__ == "__main__":
+    main()
