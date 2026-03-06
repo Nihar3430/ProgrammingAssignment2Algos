@@ -90,20 +90,23 @@ def optff_misses(k, requests):
 
 
 def main():
-    if len(sys.argv) != 2:
+    if len(sys.argv) != 3:
         return
 
-    filename = sys.argv[1]
-    k, m, requests = read_input(filename)
+    input_file = sys.argv[1]
+    output_file = sys.argv[2]
+    k, m, requests = read_input(input_file)
 
     fifo_miss_return = fifo_misses(k, requests)
     lru_miss_return = lru_misses(k, requests)
     optff_miss_return = optff_misses(k, requests)
 
-    print("FIFO  :", fifo_miss_return)
-    print("LRU   :", lru_miss_return)
-    print("OPTFF :", optff_miss_return)
 
+    out = open(output_file, "w")
+    out.write("FIFO  : " + str(fifo_miss_return) + "\n")
+    out.write("LRU   : " + str(lru_miss_return) + "\n")
+    out.write("OPTFF : " + str(optff_miss_return) + "\n")
+    out.close()
 
 if __name__ == "__main__":
     main()
