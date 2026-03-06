@@ -29,7 +29,23 @@ def fifo_misses(k, requests):
     return misses
 
 def lru_misses(k, requests):
-    return
+    cache = []
+    misses = 0
+
+    for item in requests:
+        if item in cache:
+            cache.remove(item)
+            cache.append(item)
+        else:
+            misses += 1
+
+            if len(cache) < k:
+                cache.append(item)
+            else:
+                cache.pop(0)
+                cache.append(item)
+
+    return misses
 
 def optff_misses(k, requests):
     return
