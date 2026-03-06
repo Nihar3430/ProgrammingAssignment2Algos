@@ -48,7 +48,19 @@ def lru_misses(k, requests):
     return misses
 
 def optff_misses(k, requests):
-    return
+    cache = []
+    misses = 0
+
+    for i in range(len(requests)):
+        item = requests[i]
+
+        if item in cache:
+            continue
+
+        misses += 1
+
+        if len(cache) < k:
+            cache.append(item)
 
 
 def main():
