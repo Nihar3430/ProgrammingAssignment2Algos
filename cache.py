@@ -61,6 +61,32 @@ def optff_misses(k, requests):
 
         if len(cache) < k:
             cache.append(item)
+        else:
+            remove_index = 0
+            farthest_next_use = -1
+
+            for j in range(len(cache)):
+                current_cache_item = cache[j]
+                next_use_position = -1
+
+                for p in range(i + 1, len(requests)):
+                    if requests[p] == current_cache_item:
+                        next_use_position = p
+                        break
+
+                if next_use_position == -1:
+                    remove_index = j
+                    break
+
+                if next_use_position > farthest_next_use:
+                    farthest_next_use = next_use_position
+                    remove_index = j
+
+            cache.pop(remove_index)
+            cache.append(item)
+
+    return misses
+
 
 
 def main():
